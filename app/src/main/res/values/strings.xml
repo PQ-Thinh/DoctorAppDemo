@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DoctorAppDemo</string>
+    <string name="get_started">Bắt Đầu</string>
+    <string name="sub_intro">Chăm sóc tận tình, \nluôn gần bạn</string>
+</resources>
