@@ -32,7 +32,7 @@ fun HomeHeader(){
                 color = Color.Black,
                 fontWeight = FontWeight.Bold
             )
-            Text("Ngày Hôm Nay Ổn Chứ?",
+            Text("Ngày Hôm Nay Ổn Chứ ?",
 
                 color = Color.Black,
                 modifier = Modifier
