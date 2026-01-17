@@ -27,7 +27,10 @@ fun MainScreen(
         }
     ){inner ->
         LazyColumn(contentPadding = inner) {
-            item { HomeHeader() }
+            item { HomeHeader()}
+            item { Banner() }
+            item { SectionHeader(
+                title = "Bác sĩ chuyên khoa", onSeeAllClicked = null)}
         }
 
     }
