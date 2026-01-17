@@ -1,6 +1,5 @@
 package com.example.doctorappdemo.core.ViewModel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.example.doctorappdemo.core.model.CategoryModel
 import com.google.firebase.database.DataSnapshot
@@ -11,8 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 class MainViewModel: ViewModel() {
-    private val db = FirebaseDatabase.getInstance()
-
+    private val db = FirebaseDatabase.getInstance("https://doctorappdemo-d8f10-default-rtdb.asia-southeast1.firebasedatabase.app")
     private val _category = MutableStateFlow<List<CategoryModel>>(emptyList())
 
     val category: StateFlow<List<CategoryModel>> = _category
@@ -33,8 +31,8 @@ class MainViewModel: ViewModel() {
                     child.getValue(CategoryModel::class.java)?.let {
                         items.add(it)
                     }
-                    _category.value = items
                 }
+                _category.value = items
             }
             override fun onCancelled(error: DatabaseError) {
                 categoryLoaded = false
