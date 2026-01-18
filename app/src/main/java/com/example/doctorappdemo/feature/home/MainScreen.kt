@@ -19,10 +19,10 @@ import kotlin.collections.emptyList
 fun MainScreen(viewModel: MainViewModel
 
 ){
-    val category by viewModel.category.collectAsState(initial = emptyList())
+    val categories by viewModel.category.collectAsState(initial = emptyList())
 
     LaunchedEffect(Unit) {
-        if (category.isEmpty()) {
+        if (categories.isEmpty()) {
             viewModel.loadCategory(force = false)
         }
 
@@ -44,7 +44,7 @@ fun MainScreen(viewModel: MainViewModel
             item { Banner() }
             item { SectionHeader(
                 title = "Bác sĩ chuyên khoa", onSeeAllClicked = null)}
-            item { CategoryRow(items = category) }
+            item { CategoryRow(items = categories) }
         }
 
     }
