@@ -20,11 +20,10 @@ fun MainScreen(viewModel: MainViewModel
 
 ){
     val categories by viewModel.category.collectAsState(initial = emptyList())
-
+    val doctors by viewModel.doctors.collectAsState(initial = emptyList())
     LaunchedEffect(Unit) {
-        if (categories.isEmpty()) {
-            viewModel.loadCategory(force = false)
-        }
+        viewModel.loadCategory()
+        viewModel.loadDoctors()
 
     }
     var selectedBottom by remember {
@@ -45,6 +44,9 @@ fun MainScreen(viewModel: MainViewModel
             item { SectionHeader(
                 title = "Bác sĩ chuyên khoa", onSeeAllClicked = null)}
             item { CategoryRow(items = categories) }
+            item { SectionHeader(
+                title = "Bác sĩ chuyên khoa", onSeeAllClicked = null)}
+            item { DoctorRow(items = doctors, onClick = {}) }
         }
 
     }
