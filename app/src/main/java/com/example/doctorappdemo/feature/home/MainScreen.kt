@@ -13,10 +13,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.doctorappdemo.core.ViewModel.MainViewModel
+import com.example.doctorappdemo.core.model.DoctorModel
 import kotlin.collections.emptyList
 
 @Composable
-fun MainScreen(viewModel: MainViewModel
+fun MainScreen(
+    viewModel: MainViewModel,
+    onOpenDoctorDetail: (DoctorModel) -> Unit = {}
 
 ){
     val categories by viewModel.category.collectAsState(initial = emptyList())
@@ -43,10 +46,11 @@ fun MainScreen(viewModel: MainViewModel
             item { Banner() }
             item { SectionHeader(
                 title = "Bác sĩ chuyên khoa", onSeeAllClicked = null)}
-            item { CategoryRow(items = categories) }
+            item { CategoryRow(items = categories, onClick = {}) }
             item { SectionHeader(
                 title = "Bác sĩ chuyên khoa", onSeeAllClicked = null)}
-            item { DoctorRow(items = doctors, onClick = {}) }
+            item { DoctorRow(items = doctors, onClick = onOpenDoctorDetail) }
+
         }
 
     }
@@ -57,5 +61,5 @@ fun MainScreen(viewModel: MainViewModel
 @Preview(showBackground = true)
 fun MainScreenPreview(){
     val viewModel: MainViewModel = viewModel()
-    MainScreen(viewModel = viewModel)
+    MainScreen(viewModel = viewModel, onOpenDoctorDetail = {})
 }

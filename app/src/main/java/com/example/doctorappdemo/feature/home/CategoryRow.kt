@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.example.doctorappdemo.R
 import com.example.doctorappdemo.core.model.CategoryModel
+import com.example.doctorappdemo.core.model.DoctorModel
 
 @Composable
 private fun CategoryItem(item: CategoryModel){
@@ -66,7 +67,9 @@ private fun CategoryItemPreview(){
     CategoryItem(item)
 }
 @Composable
-fun CategoryRow(items: List<CategoryModel>){
+fun CategoryRow(
+    items: List<CategoryModel>,
+    onClick: (DoctorModel)-> Unit){
     Box(
         Modifier.fillMaxWidth()
             .heightIn(min=100.dp)

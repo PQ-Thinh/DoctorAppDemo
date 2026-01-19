@@ -114,6 +114,7 @@ fun DoctorRow(
     onClick: (DoctorModel) -> Unit
 ){
     Box(Modifier
+        .padding(top=16.dp)
         .fillMaxWidth()
         .heightIn(min=260.dp)
     ) {

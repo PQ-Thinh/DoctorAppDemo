@@ -20,6 +20,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.doctorappdemo.R
 import com.example.doctorappdemo.core.model.DoctorModel
+import com.example.doctorappdemo.feature.detail.componets.RatingStat
+import com.example.doctorappdemo.feature.detail.componets.StateColumn
+import com.example.doctorappdemo.feature.detail.componets.VerticalDivider
 
 @Composable
 fun DetailBody(
@@ -42,14 +45,14 @@ fun DetailBody(
         Text(
             text = item.Name?:"Tieu de",
             color = Color.Black,
-            fontSize = 220.sp,
+            fontSize = 22.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
         )
         Text(
-            text = item.Special?:"Chuyên khoa",
+            text = "Khoa: "+item.Special?:"Chuyên khoa",
             color = Color.Black,
             modifier = Modifier.padding(horizontal = 16.dp)
 
@@ -66,6 +69,18 @@ fun DetailBody(
                 color = darkPurple,
                 modifier = Modifier.weight(1f)
             )
+        }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 16.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            StateColumn(title = "Bệnh Nhân", value = item.Patiens?:"-")
+            VerticalDivider(color = gray)
+            StateColumn("Kinh nghiệm", value = "${item.Expriense?:0} năm")
+            VerticalDivider(color = gray)
+            RatingStat(title = "Đánh Giá", rating = item.Rating?: 0.0)
         }
     }
 }
