@@ -7,6 +7,7 @@ import com.example.doctorappdemo.core.ViewModel.MainViewModel
 import com.example.doctorappdemo.navigation.routes.detailRoute
 import com.example.doctorappdemo.navigation.routes.homeRoute
 import com.example.doctorappdemo.navigation.routes.introRoute
+import com.example.doctorappdemo.navigation.routes.topDoctorsRoute
 
 @Composable
 fun AppNavGraph(
@@ -22,7 +23,18 @@ fun AppNavGraph(
                 }
             }
         })
-        homeRoute(vm = vm,
+        homeRoute(
+            vm = vm,
+            onOpenTopDoctors = {
+                nav.navigate(Screen.TopDoctors.route)
+            },
+            onOpenDetail = {doctorModel ->
+                nav.navigateToDetail(doctorModel)
+            }
+
+        )
+        topDoctorsRoute(vm = vm,
+            onBack = {nav.popBackStack()},
             onOpenDetail = {doctorModel ->
                 nav.navigateToDetail(doctorModel)
             })

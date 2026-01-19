@@ -19,6 +19,7 @@ import kotlin.collections.emptyList
 @Composable
 fun MainScreen(
     viewModel: MainViewModel,
+    onOpenTopDoctors: () -> Unit,
     onOpenDoctorDetail: (DoctorModel) -> Unit = {}
 
 ){
@@ -48,7 +49,7 @@ fun MainScreen(
                 title = "Bác sĩ chuyên khoa", onSeeAllClicked = null)}
             item { CategoryRow(items = categories, onClick = {}) }
             item { SectionHeader(
-                title = "Bác sĩ chuyên khoa", onSeeAllClicked = null)}
+                title = "Danh sách bác sĩ", onSeeAllClicked = onOpenTopDoctors)}
             item { DoctorRow(items = doctors, onClick = onOpenDoctorDetail) }
 
         }
@@ -61,5 +62,5 @@ fun MainScreen(
 @Preview(showBackground = true)
 fun MainScreenPreview(){
     val viewModel: MainViewModel = viewModel()
-    MainScreen(viewModel = viewModel, onOpenDoctorDetail = {})
+    MainScreen(viewModel = viewModel, onOpenTopDoctors = {},onOpenDoctorDetail = {})
 }

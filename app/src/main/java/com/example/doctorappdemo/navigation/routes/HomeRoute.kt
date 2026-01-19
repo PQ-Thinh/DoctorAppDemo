@@ -12,7 +12,9 @@ import com.example.doctorappdemo.navigation.Screen
 
 fun NavGraphBuilder.homeRoute(
     vm: MainViewModel,
+    onOpenTopDoctors: ()->Unit,
     onOpenDetail: (DoctorModel)-> Unit
+
 ){
     composable(Screen.Home.route){
         val categories by vm.category.collectAsState(initial = emptyList())
@@ -24,6 +26,7 @@ fun NavGraphBuilder.homeRoute(
         }
 
         MainScreen(vm,
+            onOpenTopDoctors=onOpenTopDoctors,
         onOpenDoctorDetail = onOpenDetail)
 
 
